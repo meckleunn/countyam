@@ -6,8 +6,12 @@ import pandas as pd
 
 
 class Vehicle:
-    def __init__(self, name, purchase_year, replacement_years):
+    def __init__(self, name, purchase_year=None, replacement_years=None): #init as none
         self.name = name
+        if purchase_year is None:
+            purchase_year = int(input("Enter the purchase year: "))
+        if replacement_years is None:
+            replacement_years = int(input("Enter the replacement years in policy: "))
         self.purchase_year = purchase_year
         self.replacement_years = replacement_years
         self.replacement_year = self.purchase_year + self.replacement_years
@@ -71,7 +75,7 @@ def write_to_csv(filename, fieldnames, data):
         writer.writerow(data)
 
 Vehicle_name = input("Enter the vehicle number: ")
-vehicle = Vehicle(Vehicle_name, None, None)
+vehicle = Vehicle(Vehicle_name)
 if vehicle.name_check() != True:
     Purchase_year = int(input("Enter the purchase year: "))
     Replacement_years = int(input("Enter the replacement years in policy: "))
